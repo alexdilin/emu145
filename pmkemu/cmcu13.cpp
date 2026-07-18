@@ -640,37 +640,37 @@ void cMCU::disassemble()
         tmp+="R[i]";
     if(mcmd.bits.a_m)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="M[i]";
     }
     if(mcmd.bits.a_st)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="ST[i]";
     }
     if(mcmd.bits.a_nr)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="~R[i]";
     }
     if(mcmd.bits.a_10nl)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="0xA*!L";
     }
     if(mcmd.bits.a_s)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="S";
     }
     if(mcmd.bits.a_4)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="0x4";
     }
@@ -681,42 +681,42 @@ void cMCU::disassemble()
     tmp="";
     if(mcmd.bits.b_1)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="0x1";
     }
     if(mcmd.bits.b_6)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="0x6";
     }
     if(mcmd.bits.b_ns)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="~S";
     }
     if(mcmd.bits.b_s)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="S";
     }
     if(mcmd.bits.b_s1)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="S1";
     }
-    if(tmp.count())
+    if(tmp.size())
     {
-        if(cmd.count())
+        if(cmd.size())
             cmd+="("+tmp+")";
         else
             cmd=tmp;
     }
-    if(cmd.count())
+    if(cmd.size())
     {
         if(mcmd.bits.g_l|mcmd.bits.g_nl|mcmd.bits.g_nt)
             cmd+="+";
@@ -724,29 +724,29 @@ void cMCU::disassemble()
     tmp="";
     if(mcmd.bits.g_l)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="L";
     }
     if(mcmd.bits.g_nl)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="!L";
     }
     if(mcmd.bits.g_nt)
     {
-        if(tmp.count())
+        if(tmp.size())
             tmp+="|";
         tmp+="!T";
     }
-    if(tmp.count())
+    if(tmp.size())
     {
-        if(cmd.count())
+        if(cmd.size())
             cmd+="("+tmp+")";
     }
     tmp="";
-    if(cmd.count())
+    if(cmd.size())
         cmd="sum="+cmd+"; ";
 
     switch(mcmd.bits.r0)

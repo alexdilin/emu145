@@ -48,6 +48,6 @@ void cValueDlg::on_okBtn_clicked()
 void cValueDlg::setReg(QString str, unsigned char val)
 {
     ui->regText->setText(str);
-    ui->regValue->setText(QString().sprintf("%1.1X",val&0xf));
+    ui->regValue->setText(QString::asprintf("%1.1X",val&0xf));
 }
 

@@ -52,14 +52,14 @@ cDebugDlg::cDebugDlg(QWidget *parent) :
     for(i=0;i<9;i++)
         for(j=0;j<14;j++)
         {
-            items[i*14+j]=new QTableWidgetItem(QString().sprintf("%X",(i*14+j)%16));
+            items[i*14+j]=new QTableWidgetItem(QString::asprintf("%X",(i*14+j)%16));
             items[i*14+j]->setFlags(Qt::ItemIsEnabled);
             ui->regTable->setItem(i,j,items[i*14+j]);
-            //ui->regTable->item(i,j)->setBackgroundColor(QColor().setRgb(128,128,128));
+            //ui->regTable->item(i,j)->setBackground(QColor().setRgb(128,128,128));
 
             rt=ui->regTable->item(i,j)->background();
 
-            ui->regTable->item(i,j)->setBackgroundColor(rg);
+            ui->regTable->item(i,j)->setBackground(rg);
 
         }
     setI(0);
@@ -86,24 +86,24 @@ void cDebugDlg::onItemChange(QTableWidgetItem *itm)
         case 0:
         case 1:
         case 2:
-            dlg->setReg(QString().sprintf("M%d[%d]=",itm->row()+1,itm->column()),i&0xf);
+            dlg->setReg(QString::asprintf("M%d[%d]=",itm->row()+1,itm->column()),i&0xf);
             break;
         case 3:
         case 4:
         case 5:
-            dlg->setReg(QString().sprintf("R%d[%d]=",itm->row()+1,itm->column()),i&0xf);
+            dlg->setReg(QString::asprintf("R%d[%d]=",itm->row()+1,itm->column()),i&0xf);
             break;
         case 6:
         case 7:
         case 8:
-            dlg->setReg(QString().sprintf("ST%d[%d]=",itm->row()+1,itm->column()),i&0xf);
+            dlg->setReg(QString::asprintf("ST%d[%d]=",itm->row()+1,itm->column()),i&0xf);
             break;
     }
 
     dlg->exec();
 
     if(dlg->changed)
-        itm->setText(QString().sprintf("%1.1X",dlg->newval&0xf));
+        itm->setText(QString::asprintf("%1.1X",dlg->newval&0xf));
 
     delete dlg;
 
@@ -117,58 +117,58 @@ void cDebugDlg::setI(unsigned int i)
     rg.setRgb(200,200,200);
     for(j=0;j<14;j++)
     {
-        ui->regTable->item(0,j)->setBackgroundColor(rg);
-        ui->regTable->item(1,j)->setBackgroundColor(rg);
-        ui->regTable->item(2,j)->setBackgroundColor(rg);
-        ui->regTable->item(3,j)->setBackgroundColor(rg);
-        ui->regTable->item(4,j)->setBackgroundColor(rg);
-        ui->regTable->item(5,j)->setBackgroundColor(rg);
-        ui->regTable->item(6,j)->setBackgroundColor(rg);
-        ui->regTable->item(7,j)->setBackgroundColor(rg);
-        ui->regTable->item(8,j)->setBackgroundColor(rg);
+        ui->regTable->item(0,j)->setBackground(rg);
+        ui->regTable->item(1,j)->setBackground(rg);
+        ui->regTable->item(2,j)->setBackground(rg);
+        ui->regTable->item(3,j)->setBackground(rg);
+        ui->regTable->item(4,j)->setBackground(rg);
+        ui->regTable->item(5,j)->setBackground(rg);
+        ui->regTable->item(6,j)->setBackground(rg);
+        ui->regTable->item(7,j)->setBackground(rg);
+        ui->regTable->item(8,j)->setBackground(rg);
 
     }
     r=i%3;
     c=i/3;
     rg.setRgb(128,255,128);
-    ui->regTable->item(0+r,c)->setBackgroundColor(rg);
-    ui->regTable->item(3+r,c)->setBackgroundColor(rg);
-    ui->regTable->item(6+r,c)->setBackgroundColor(rg);
+    ui->regTable->item(0+r,c)->setBackground(rg);
+    ui->regTable->item(3+r,c)->setBackground(rg);
+    ui->regTable->item(6+r,c)->setBackground(rg);
 #endif
 }
 
 
 void cDebugDlg::setH(unsigned char h)
 {
-    ui->rh->setText(QString().sprintf("H: %1.1X",h&0xf));
+    ui->rh->setText(QString::asprintf("H: %1.1X",h&0xf));
 }
 void cDebugDlg::setL(bool l)
 {
-    ui->rl->setText(QString().sprintf("L: %c",l?'1':'0'));
+    ui->rl->setText(QString::asprintf("L: %c",l?'1':'0'));
 }
 void cDebugDlg::setPC(unsigned char pc)
 {
-    ui->rpc->setText(QString().sprintf("PC: %2.2X",pc));
+    ui->rpc->setText(QString::asprintf("PC: %2.2X",pc));
 }
 void cDebugDlg::setCMD(unsigned int cmd)
 {
-    ui->rcmd->setText(QString().sprintf("CMD: %2.2X %2.2X %2.2X %c",cmd&0x7f,(cmd>>8)&0x7f,(cmd>>16)&0xff,cmd&0xff000000?'1':'0'));
+    ui->rcmd->setText(QString::asprintf("CMD: %2.2X %2.2X %2.2X %c",cmd&0x7f,(cmd>>8)&0x7f,(cmd>>16)&0xff,cmd&0xff000000?'1':'0'));
 }
 void cDebugDlg::setS(unsigned char s)
 {
-    ui->rs->setText(QString().sprintf("S: %1.1X",s&0xf));
+    ui->rs->setText(QString::asprintf("S: %1.1X",s&0xf));
 }
 void cDebugDlg::setS1(unsigned char s1)
 {
-    ui->rs1->setText(QString().sprintf("S1: %1.1X",s1&0xf));
+    ui->rs1->setText(QString::asprintf("S1: %1.1X",s1&0xf));
 }
 void cDebugDlg::setASP(unsigned char asp)
 {
-    ui->aspid->setText(QString().sprintf("ASP: %2.2X",asp));
+    ui->aspid->setText(QString::asprintf("ASP: %2.2X",asp));
 }
 void cDebugDlg::setUCMD(unsigned char ucmd,QString disassm)
 {
-    ui->ucmdaddr->setText(QString().sprintf("uCMD: %2.2X",ucmd));
+    ui->ucmdaddr->setText(QString::asprintf("uCMD: %2.2X",ucmd));
     QString str;
 
     str="uCMD: "+disassm;
@@ -221,9 +221,9 @@ void cDebugDlg::setREGS(bool rm[],bool rr[],bool rst[],unsigned int rlen, unsign
         {
             r=curi%3;
             c=curi/3;
-            ui->regTable->item(r,c)->setText(QString().sprintf("%1.1X",curm));
-            ui->regTable->item(3+r,c)->setText(QString().sprintf("%1.1X",curr));
-            ui->regTable->item(6+r,c)->setText(QString().sprintf("%1.1X",curst));
+            ui->regTable->item(r,c)->setText(QString::asprintf("%1.1X",curm));
+            ui->regTable->item(3+r,c)->setText(QString::asprintf("%1.1X",curr));
+            ui->regTable->item(6+r,c)->setText(QString::asprintf("%1.1X",curst));
             curu=0;
             curi++;
             if(curi>=(rlen/4))

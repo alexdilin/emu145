@@ -4,21 +4,23 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += core gui widgets
 
 TARGET = pmkemu
+
 TEMPLATE = app
 
-
-SOURCES += main.cpp\
-        mainwindow.cpp \
+SOURCES += \
+    main.cpp\
+    mainwindow.cpp \
     cmcu13.cpp \
     cmem.cpp \
     cdebugdlg.cpp \
     cvaluedlg.cpp \
     emulator.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS += \
+    mainwindow.h \
     cmcu13.h \
     cmem.h \
     ucommands.h \
@@ -28,9 +30,18 @@ HEADERS  += mainwindow.h \
     cvaluedlg.h \
     emulator.h
 
-FORMS    += mainwindow.ui \
+FORMS += \
+    mainwindow.ui \
     cdebugdlg.ui \
     cvaluedlg.ui
 
 RESOURCES += \
     rsrc.qrc
+
+DESTDIR = build
+
+MOC_DIR = build
+
+OBJECTS_DIR = build
+
+UI_DIR = build

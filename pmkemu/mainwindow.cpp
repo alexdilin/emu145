@@ -78,7 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
     btns.append(ui->b_3_11);
 
 
-    for(i=0;i<btns.count();i++)
+    for(i=0;i<btns.size();i++)
     {
         connect(btns.at(i),SIGNAL(pressed()),this,SLOT(on_keypad_clicked()));
         connect(btns.at(i),SIGNAL(released()),this,SLOT(on_keypad_clicked()));
@@ -169,7 +169,7 @@ void MainWindow::updatedisp()
 
 void MainWindow::on_sync(QByteArray *disp)
 {
-    for(int i=0;i<disp->count();i++)
+    for(int i=0;i<disp->size();i++)
         display[i]=disp->at(i);
     //int i;
     //for(i=0;i<12;i++)
@@ -221,21 +221,21 @@ void MainWindow::OnTimer()
 
 #if 0
     //updatedisp();
-    ui->ik1302_d->setText(QString().sprintf("d=%d %d   ",ik1302->dcount,dcycle));
-    ui->ik1302_e->setText(QString().sprintf("e=%d   ",ik1302->ecount));
-    ui->ik1302_i->setText(QString().sprintf("i=%d   ",ik1302->icount));
-    ui->ik1302_sy->setText(QString().sprintf("sync= %s  ",sync?"T":" "));
-    ui->ic1302_cp->setText(QString().sprintf("pc=%2.2X    ",ik1302->cptr));
+    ui->ik1302_d->setText(QString::asprintf("d=%d %d   ",ik1302->dcount,dcycle));
+    ui->ik1302_e->setText(QString::asprintf("e=%d   ",ik1302->ecount));
+    ui->ik1302_i->setText(QString::asprintf("i=%d   ",ik1302->icount));
+    ui->ik1302_sy->setText(QString::asprintf("sync= %s  ",sync?"T":" "));
+    ui->ic1302_cp->setText(QString::asprintf("pc=%2.2X    ",ik1302->cptr));
 
-    ui->ik1303_d->setText(QString().sprintf("d=%d   ",ik1303->dcount));
-    ui->ik1303_e->setText(QString().sprintf("e=%d   ",ik1303->ecount));
-    ui->ik1303_i->setText(QString().sprintf("i=%d   ",ik1303->icount));
-    ui->ic1303_cp->setText(QString().sprintf("pc=%2.2X    ",ik1303->cptr));
+    ui->ik1303_d->setText(QString::asprintf("d=%d   ",ik1303->dcount));
+    ui->ik1303_e->setText(QString::asprintf("e=%d   ",ik1303->ecount));
+    ui->ik1303_i->setText(QString::asprintf("i=%d   ",ik1303->icount));
+    ui->ic1303_cp->setText(QString::asprintf("pc=%2.2X    ",ik1303->cptr));
 
 
-    ui->ik1306_d->setText(QString().sprintf("d=%d   ",ik1306->dcount+1));
-    ui->ik1306_e->setText(QString().sprintf("e=%d   ",ik1306->ecount+1));
-    ui->ik1306_i->setText(QString().sprintf("i=%d   ",ik1306->icount));
+    ui->ik1306_d->setText(QString::asprintf("d=%d   ",ik1306->dcount+1));
+    ui->ik1306_e->setText(QString::asprintf("e=%d   ",ik1306->ecount+1));
+    ui->ik1306_i->setText(QString::asprintf("i=%d   ",ik1306->icount));
 #endif
 
 }
@@ -263,14 +263,14 @@ void MainWindow::on_keypad_clicked()
     //if(btnpressed) //one button is still processing
       //  return;
 
-    for(i=0;i<btns.count();i++)
+    for(i=0;i<btns.size();i++)
     {
         if(btns.at(i)->isDown())
         {
             btnpressed=(i/10)+1;
             btnpressed<<=8;
             btnpressed|=i%10;
-            ui->ik1302_d->setText(QString().sprintf("d=%x  ",btnpressed));
+            ui->ik1302_d->setText(QString::asprintf("d=%x  ",btnpressed));
             emit keypad(btnpressed);
             return;
         }

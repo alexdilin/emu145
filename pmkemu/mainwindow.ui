@@ -251,7 +251,7 @@ background-color: rgb(0, 40, 0);</string>
       <property name="smallDecimalPoint">
        <bool>true</bool>
       </property>
-      <property name="numDigits">
+      <property name="digitCount">
        <number>12</number>
       </property>
       <property name="digitCount">

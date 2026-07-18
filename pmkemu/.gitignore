@@ -1,0 +1,4 @@
+.qmake.stash
+qrc_rsrc.cpp
+Makefile
+build/
