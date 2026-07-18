@@ -180,6 +180,7 @@ void MainWindow::on_sync(QByteArray *disp)
 
 void MainWindow::on_mode_changed(int i)
 {
+    (void)i; // suppress unused-parameter warning
     switch(ui->modeSlider->value())
     {
         case 1:

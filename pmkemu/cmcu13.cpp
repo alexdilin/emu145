@@ -29,6 +29,7 @@ const unsigned char jrom[42]={
 
 cMCU::cMCU(QObject *parent, QString name,bool debug)
 {
+    (void)parent; // suppress warning
     
     int i;
     for(i=0;i<MCU_BITLEN;i++)
@@ -585,6 +586,7 @@ void cMCU::disassemble()
     QString tmp;
     unsigned char ucmd;
     unsigned char masp;
+    (void)masp; // suppress unused-but-set-variable warning
     ucmd_u mcmd;
 
 

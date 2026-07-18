@@ -174,8 +174,9 @@ void emulator::run()
 
     unsigned int cycle;
     unsigned int maxcycle;
-    bool grd;
+    bool grd = false; // suppress maybe-uninitialized warning
     int buttondly;
+    (void)buttondly; // suppress unused-but-set-variable warning
 
     //2 ms = real time
     buttondly=0;
